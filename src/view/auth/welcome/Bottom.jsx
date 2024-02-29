@@ -9,6 +9,7 @@ import {
 } from '../../../components/custom/TouchableOpacityes';
 //* Other
 import {INITIAL_NAVIGATORS} from '../../../utils/constant/navigator/initialNavigatorsConstant';
+import {HOME_NAVIGATORS} from '../../../utils/constant/navigator/homeNavigatorsConstant';
 
 const Spacer = styled(ViewComp)`
   margin-vertical: ${props => props.theme.spacing.byHeight(12)};
@@ -29,7 +30,12 @@ const BottomSection = () => {
       <TextButton
         text="Continue as Guest"
         onPress={() =>
-          navigation.replace(INITIAL_NAVIGATORS.HOME_NAVIGATOR.name)
+          navigation.replace(INITIAL_NAVIGATORS.HOME_NAVIGATOR.name, {
+            screen: HOME_NAVIGATORS.PROFILE.name,
+            params: {
+              displayToGo: 'TOPIC',
+            },
+          })
         }
       />
     </ViewComp>

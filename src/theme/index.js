@@ -2,6 +2,8 @@ import {Dimensions} from 'react-native';
 import variants from './variants';
 
 const {height, width} = Dimensions.get('window');
+const defaultDeviceHeightValue = 866; // figma desing => 844
+const defaultDeviceWidthValue = 390; // figma desing => 390
 
 const createThemePrepare = (themeProps, customThemeProps) => {
   return {
@@ -21,9 +23,17 @@ const createTheme = name => {
   let _createThemePrepare = createThemePrepare(
     {
       spacing: {
-        byHeight: px => `${height * (px / height)}px`,
+        byHeight: px => {
+          let ratio = px / defaultDeviceHeightValue;
+          let value = ratio * height;
+          return `${value}px`;
+        },
 
-        byWidth: px => `${width * (px / width)}px`,
+        byWidth: px => {
+          let ratio = px / defaultDeviceWidthValue;
+          let value = ratio * width;
+          return `${value}px`;
+        },
       },
 
       //* breakpoints: Gerekli ise kesme nokta değerleri,

@@ -172,3 +172,19 @@ export const HorizontalDividerWithCenterTextLabel = props => {
     </StyledDefaultText>
   );
 };
+
+export const ModalTitleText = props => {
+  const {children, ...other} = props;
+
+  return (
+    <StyledSecondaryText
+      style={{
+        fontSize: 18,
+        fontWeight: '600',
+        lineHeight: 22,
+      }}
+      {...other}>
+      {children}
+    </StyledSecondaryText>
+  );
+};
